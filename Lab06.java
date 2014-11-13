@@ -1,7 +1,8 @@
-   //Name______________________________ Date_____________
-   import edu.fcps.karel2.Display;
-   import edu.fcps.karel2.Robot;
-   import javax.swing.JOptionPane;
+   //Name Riley Date Nov. 12, 2014
+ import edu.fcps.karel2.Display;
+  import edu.fcps.karel2.Robot;
+  import javax.swing.JOptionPane;
+    
     public class Lab06
    {
        public static void main(String[] args) 
@@ -11,41 +12,104 @@
          Display.setSize(10, 10);
          Display.setSpeed(10);
       
-         task_01(); //go to the end of the row of beepers
-         task_02(); //go to the beeper
-         task_03(); //go to the wall
-         task_04(); //go to the wall, pick up all the beepers (max one per pile)
-         task_05(); //go to the wall, pick up all the beepers
-         task_06(); //go to the end of the row of beepers, there is one gap
+         task_01(); 
+         task_02(); 
+         task_03(); 
+         task_04();
+         task_05(); 
+         task_06(); 
       }
-       public static void task_01()	
-      { //go to the end of the row of beepers
-         Robot temp = new Robot(1, 1, Display.EAST, 0);
+      
+       public static void task_01() 
+      { 
+         Robot tom = new Robot(1, 1, Display.EAST, 0);
+         
+         while(tom.nextToABeeper())
+         {
+            tom.move();
+         }
+           
       
       }
-       public static void task_02()	
-      { //go to the beeper
-         Robot temp = new Robot(1, 2, Display.EAST, 0);
-      	
+       public static void task_02() 
+      { 
+         Robot mark = new Robot(1, 2, Display.EAST, 0);
+         
+         while(!mark.nextToABeeper())
+         {
+            mark.move();
+         }
+         
       }
-       public static void task_03()	
-      { //go to the wall
-         Robot temp = new Robot(1, 3, Display.EAST, 0);
+       public static void task_03() 
+      { 
+         Robot chad = new Robot(1, 3, Display.EAST, 0);
+         
+         while(chad.frontIsClear())
+         {
+            chad.move();
+         }
        
       }
-       public static void task_04()	
-      { //go to the wall, pick up all the beepers (max one per pile)
-         Robot temp = new Robot(1, 4, Display.EAST, 0);
       
-      }
-       public static void task_05()	
-      { //go to the wall, pick up all the beepers
-         Robot temp = new Robot(1, 5, Display.EAST, 0);
+       public static void task_04() 
+      { 
+         Robot riley = new Robot(1, 4, Display.EAST, 0);
+         {
+            while(riley.frontIsClear())
+            {
+            
+              while(riley.nextToABeeper())
+              {
+               riley.pickBeeper();
+               }
+               
+               riley.move();
+            }
+         }
+       }
       
-      }
+       public static void task_05() 
+      {
+         Robot potter = new Robot(1, 5, Display.EAST, 0);
+         
+         while(potter.frontIsClear())
+         {
+         while(potter.nextToABeeper())
+         {
+            potter.pickBeeper();
+         }
+            potter.move();
+            
+         }
+         
+         while(!potter.frontIsClear()&&potter.nextToABeeper())
+         {
+            potter.pickBeeper();
+         }
+           
+        } 
+      
        public static void task_06()
-      { //go to the end of the row of beepers, there is one gap
-         Robot temp = new Robot(1, 6, Display.EAST, 0);
+      { 
+         Robot joey = new Robot(1, 6, Display.EAST, 0);
+         while(joey.nextToABeeper())
+         {
+             joey.move();
+         }
+         
+         while(!joey.nextToABeeper())
+          {
+               
+               joey.move();
+               
+          }
+               
       
+      while(joey.nextToABeeper())
+         {
+             joey.move();
+         }
+
       }
    }
